@@ -13,11 +13,18 @@
       win_scheduled_task:
         name: Copy archived logs to server
         description: "Scheduled task created by Ansible"
-        command: C:\Temp\UploadArchive.ps1 -SourcePath "c:\Temp\Source" -Destination "C:\Temp\Dest" -StorageUser "training" -PasswordFile "C:\Temp\File.enc"  
+        actions:
+        - path: C:\Temp\UploadArchive.ps1
+          arguments: -SourcePath "c:\Temp\Source" -Destination "C:\Temp\Dest" -StorageUser "training" -PasswordFile "C:\Temp\File.enc" 
+        #command: C:\Temp\UploadArchive.ps1 -SourcePath "c:\Temp\Source" -Destination "C:\Temp\Dest" -StorageUser "training" -PasswordFile "C:\Temp\File.enc"  
         state: present
         enabled: yes
-        trigger_frequency: daily
-        trigger_time: "23:00"
+        triggers:
+        - type: registration
+          repetition:
+            interval: PT1M
+            duration: PT5M
+            stop_at_duration_end: yes
         username: "{{ ansible_user }}"
         password: "{{ ansible_password }}"
       #no_log: True
