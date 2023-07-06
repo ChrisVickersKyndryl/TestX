@@ -1,0 +1,23 @@
+---
+- name: Create scheduled task to copy files
+  hosts: all
+   
+  tasks:
+    
+    - name: Copy file from playbook
+      win_copy:
+        src: UploadArchive.ps1
+        dest: c:\Temp\UploadArchive.ps1
+    
+    - name: Create scheduled task
+      win_scheduled_task:
+        name: Copy archived logs to server
+        description: "Scheduled task created by Ansible"
+        command: C:\Temp\UploadArchive.ps1 -SourcePath "c:\Temp\Source" -Destination "C:\Temp\Dest" -StorageUser "training" -PasswordFile "C:\Temp\File.enc"  
+        state: present
+        enabled: yes
+        trigger_frequency: daily
+        trigger_time: "23:00"
+        username: "{{ ansible_username }}"
+        password: "{{ ansible_password }}"
+      no_log: True
