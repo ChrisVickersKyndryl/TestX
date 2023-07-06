@@ -27,7 +27,7 @@
         - type: registration
           repetition:
             interval: PT1M
-            duration: PT5M
+            #duration: PT5M
             stop_at_duration_end: yes
         username: "{{ ansible_user }}"
         password: "{{ ansible_password }}"
