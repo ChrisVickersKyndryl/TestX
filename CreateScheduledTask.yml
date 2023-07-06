@@ -20,4 +20,4 @@
         trigger_time: "23:00"
         username: "{{ ansible_username }}"
         password: "{{ ansible_password }}"
-      no_log: True
+      #no_log: True
