@@ -18,6 +18,6 @@
         enabled: yes
         trigger_frequency: daily
         trigger_time: "23:00"
-        username: "{{ ansible_username }}"
+        username: "{{ ansible_user }}"
         password: "{{ ansible_password }}"
       #no_log: True
