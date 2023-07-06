@@ -14,9 +14,8 @@
         name: Copy archived logs to server
         description: "Scheduled task created by Ansible"
         actions:
-        - path: C:\Temp\UploadArchive.ps1
-          arguments: -SourcePath "c:\Temp\Source" -Destination "C:\Temp\Dest" -StorageUser "training" -PasswordFile "C:\Temp\File.enc" 
-        #command: C:\Temp\UploadArchive.ps1 -SourcePath "c:\Temp\Source" -Destination "C:\Temp\Dest" -StorageUser "training" -PasswordFile "C:\Temp\File.enc"  
+        - path: powershell.exe
+          arguments: C:\Temp\UploadArchive.ps1 -SourcePath "c:\Temp\Source" -Destination "C:\Temp\Dest" -StorageUser "training" -PasswordFile "C:\Temp\File.enc" 
         state: present
         enabled: yes
         triggers:
