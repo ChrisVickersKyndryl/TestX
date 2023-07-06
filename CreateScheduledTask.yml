@@ -15,7 +15,12 @@
         description: "Scheduled task created by Ansible"
         actions:
         - path: powershell.exe
-          arguments: C:\Temp\UploadArchive.ps1 -SourcePath "c:\Temp\Source" -Destination "C:\Temp\Dest" -StorageUser "training" -PasswordFile "C:\Temp\Credential.enc" 
+          arguments: >
+            -File "C:\Temp\UploadArchive.ps1"
+            -SourcePath "c:\Temp\Source"
+            -Destination "C:\Temp\Dest"
+            -StorageUser "training"
+            -PasswordFile "C:\Temp\Credential.enc" 
         state: present
         enabled: yes
         triggers:
