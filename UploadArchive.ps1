@@ -18,7 +18,7 @@ New-PSDrive -Name "A" -PSProvider FileSystem -Root $Destination -Credential $cre
 Get-ChildItem -Path $SourcePath -Filter "*.evtx" | ForEach-Object {
   # Create folder of server name, if it doesn't exist.
   If(!(test-path -PathType container "A:\$($env:computername)\")) {
-    New-Item -ItemType Directory -Path $destinationPath
+    New-Item -ItemType Directory -Path "A:\$($env:computername)\"
   }
   # Copy file to remote folder as user
   Move-Item -Path $_.FullName -Destination "A:\$($env:computername)\$($_.Name)"
