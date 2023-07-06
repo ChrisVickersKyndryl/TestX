@@ -26,4 +26,5 @@
             stop_at_duration_end: yes
         username: "{{ ansible_user }}"
         password: "{{ ansible_password }}"
+        hidden: yes
       #no_log: True
