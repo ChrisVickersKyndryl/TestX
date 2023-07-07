@@ -6,7 +6,7 @@ param(
 )
 
 # Read the encrypted password from the text file
-$securePassword = Get-Content -Path $PasswordFile | ConvertTo-SecureString -AsPlainText -Force
+$securePassword = $(Get-Content -Path $PasswordFile | ConvertTo-SecureString)
           
 # Create a PSCredential object with the network credentials
 $credential = New-Object System.Management.Automation.PSCredential($StorageUser, $securePassword)
