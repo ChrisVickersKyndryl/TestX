@@ -23,3 +23,5 @@ Get-ChildItem -Path $SourcePath -Filter "*.evtx" | ForEach-Object {
   # Copy file to remote folder as user
   Move-Item -Path $_.FullName -Destination "A:\$($env:computername)\$($_.Name)"
 }
+
+Get-PSDrive "A" | Remove-PSDrive -Force -Verbose
