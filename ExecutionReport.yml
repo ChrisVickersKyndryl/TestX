@@ -7,8 +7,24 @@
     - name: Get scheduled task info
       win_shell: Get-ScheduledTaskInfo -TaskName "<NAME OF TASK>" | ConvertTo-Json
       register: task_info
-      
-    - name: Create copy of single file
+
+    - name: Convert Information
+      set_fact:
+        task_info: "{{ task_info | from_json }}"
+        var_date_now: "{{ ansible_date_time.iso8601 }}"
+    
+    - name: Write task info to file
       copy:
-        content : "{{ your_json_feed }}"
-        dest: "{ansible_hostname}_Report.html"   
+        content: |
+          <tr>
+            <td>{{ ansible_hostname }}</td>
+            <td>{{ task_info.LastRunTime }}</td>
+            <td>{{ task_info.LastTaskResult }}</td>
+          </tr>
+        dest: "{ansible_hostname}_Report.html"  
+
+    - name: Read template
+      set_fact:
+        file_StoreFront:  "{{ lookup('file', './Template.html') }}"
+
+      
