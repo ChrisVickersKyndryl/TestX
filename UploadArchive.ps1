@@ -25,3 +25,5 @@ Get-ChildItem -Path $SourcePath -Filter "*.evtx" | ForEach-Object {
 }
 
 Get-PSDrive "A" | Remove-PSDrive -Force -Verbose
+
+Exit 0
