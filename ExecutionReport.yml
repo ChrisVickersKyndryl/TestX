@@ -22,6 +22,7 @@
             <td>{{ task_info.LastTaskResult }}</td>
           </tr>
         dest: "{ansible_hostname}_Report.html"  
+      delegate_to: localhost
 
     - name: Read template
       set_fact:
