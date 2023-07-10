@@ -1,0 +1,4 @@
+
+
+
+Get-ScheduledTaskInfo  -TaskName "GoogleUpdateTaskMachineCore{71CD261E-3793-46A1-BB5B-DE549960F038}"
