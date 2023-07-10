@@ -1,4 +1,14 @@
-
-
-
-Get-ScheduledTaskInfo  -TaskName "GoogleUpdateTaskMachineCore{71CD261E-3793-46A1-BB5B-DE549960F038}"
+---
+- name: Create scheduled task to copy files
+  hosts: all
+   
+  tasks:
+    
+    - name: Get scheduled task info
+      win_shell: Get-ScheduledTaskInfo -TaskName "<NAME OF TASK>" | ConvertTo-Json
+      register: task_info
+      
+    - name: Create copy of single file
+      copy:
+        content : "{{ your_json_feed }}"
+        dest: "{ansible_hostname}_Report.html"   
