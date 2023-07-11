@@ -31,6 +31,7 @@
         #delimiter: '### START FRAGMENT ###'
       regex: .*htmlsegment
       run_once: true
+      delegate_to: localhost
 
     - name: Read template and 
       set_fact:
