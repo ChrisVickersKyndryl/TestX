@@ -36,6 +36,6 @@
     - name: Read template and 
       set_fact:
         summary_results:  "{{ lookup('file', './LogReport.html') }}"
-        summart_:  "{{ lookup('file', './Template.html') }}"
+        summart_:  "{{ lookup('template', './Template.html') }}"
 
       
