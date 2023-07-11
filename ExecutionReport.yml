@@ -21,11 +21,20 @@
             <td>{{ task_info.LastRunTime }}</td>
             <td>{{ task_info.LastTaskResult }}</td>
           </tr>
-        dest: "{ansible_hostname}_Report.html"  
+        dest: "{ansible_hostname}_Report.htmlsegment"  
       delegate_to: localhost
 
-    - name: Read template
+    - name: Inserted provided delimiter in between each fragment
+      assemble:
+        src: /
+        dest: /LogReport.html
+        delimiter: '### START FRAGMENT ###'
+      regex: .*htmlsegment
+      run_once: true
+
+    - name: Read template and 
       set_fact:
-        file_StoreFront:  "{{ lookup('file', './Template.html') }}"
+        summary_results:  "{{ lookup('file', './LogReport.html') }}"
+        summart_:  "{{ lookup('file', './Template.html') }}"
 
       
