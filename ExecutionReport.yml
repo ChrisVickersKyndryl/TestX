@@ -28,7 +28,7 @@
       assemble:
         src: /
         dest: /LogReport.html
-        delimiter: '### START FRAGMENT ###'
+        #delimiter: '### START FRAGMENT ###'
       regex: .*htmlsegment
       run_once: true
 
