@@ -16,6 +16,10 @@
       debug:
         msg: "{{ my_list | selectattr('name', 'equalto', 'Item 2') | map(attribute='value') | list | first }}"
 
-    - name: Debug
+    - name: Debug ansible hostname
       debug:
         msg: "{{ ansible_hostname }}"
+
+    - name: Debug inventory hostname
+      debug:
+        msg: "{{ inventory_hostname }}"
