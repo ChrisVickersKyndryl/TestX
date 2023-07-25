@@ -15,3 +15,7 @@
     - name: Display the looked-up value
       debug:
         msg: "{{ my_list | selectattr('name', 'equalto', 'Item 2') | map(attribute='value') | list | first }}"
+
+    - name: Debug
+      debug:
+        msg: "{{ ansible_hostname }}"
