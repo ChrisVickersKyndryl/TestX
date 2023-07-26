@@ -26,7 +26,8 @@
       win_file:
         path: C:\Temp\{{ item }}\
         state: directory
-      loop: "{{ my_list | selectattr('name', 'equalto', 'Item 2') | map(attribute='command') | list }}"
+      #loop: my_list[0]['command']
+      loop: "{{ my_list | selectattr('name', 'equalto', 'Item 2') | map(attribute='command') | first }}"
       
     - name: Debug ansible hostname
       debug:
