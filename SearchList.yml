@@ -3,11 +3,11 @@
   gather_facts: true
   vars:
     my_list:
-      - name: Item 1
+      - name: 172.16.25.23
         command:
           - 100
           - 101
-      - name: Item 2
+      - name: 172.16.25.22
         command:
           - 200
           - 201
@@ -20,16 +20,11 @@
         
   tasks:
 
-    - name: Display the looked-up value
-      win_shell: "echo {{ item }}"
-      loop: "{{ my_list | selectattr('name', 'equalto', 'Item 2') | map(attribute='command') | list }}"
-
     - name: Create directory structure
       win_file:
         path: C:\Temp\{{ item }}\
         state: directory
-      #loop: my_list[0]['command']
-      loop: "{{ my_list | selectattr('name', 'equalto', 'Item 2') | map(attribute='command') | first }}"
+      loop: "{{ my_list | selectattr('name', 'equalto', inventory_hostname) | map(attribute='command') | first }}"
       
     - name: Debug ansible hostname
       debug:
