@@ -22,6 +22,12 @@
       win_shell: "echo {{ item }}"
       loop: "{{ my_list | selectattr('name', 'equalto', 'Item 2') | map(attribute='command') | list }}"
 
+    - name: Create directory structure
+      win_file:
+        path: "C:\Temp\{{ item }}\"
+        state: directory
+      loop: "{{ my_list | selectattr('name', 'equalto', 'Item 2') | map(attribute='command') | list }}"
+      
     - name: Debug ansible hostname
       debug:
         msg: "{{ ansible_hostname }}"
