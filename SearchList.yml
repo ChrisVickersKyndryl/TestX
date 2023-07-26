@@ -19,9 +19,7 @@
   tasks:
 
     - name: Display the looked-up value
-      debug:
-        msg: "{{ item }}"
-        # msg: "{{ my_list | selectattr('name', 'equalto', 'Item 2') | map(attribute='command') | list | first }}"
+      win_shell: "{{ item }}"
       loop: "{{ my_list | selectattr('name', 'equalto', 'Item 2') | map(attribute='command') | list }}"
 
     - name: Debug ansible hostname
