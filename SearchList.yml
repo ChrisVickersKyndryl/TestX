@@ -24,7 +24,7 @@
 
     - name: Create directory structure
       win_file:
-        path: "C:\Temp\{{ item }}\"
+        path: C:\Temp\{{ item }}\
         state: directory
       loop: "{{ my_list | selectattr('name', 'equalto', 'Item 2') | map(attribute='command') | list }}"
       
