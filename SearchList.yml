@@ -11,6 +11,8 @@
         command:
           - 200
           - 201
+          - 202
+          - 203
       - name: Item 3
         command:
           - 300
