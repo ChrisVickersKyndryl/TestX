@@ -20,7 +20,7 @@
 
     - name: Display the looked-up value
       win_shell: "echo {{ item }}"
-      loop: "{{ my_list | selectattr('name', 'equalto', 'Item 2') | map(attribute='command') | list }}"
+      loop: "{{ my_list | selectattr('name', 'equalto', 'Item 2') | map(attribute='command') }}"
 
     - name: Debug ansible hostname
       debug:
