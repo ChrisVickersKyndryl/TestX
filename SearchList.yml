@@ -1,22 +1,7 @@
 ---
 - hosts: all
   gather_facts: true
-  vars:
-    my_list:
-      - name: 172.16.25.23
-        command:
-          - 100
-          - 101
-      - name: 172.16.25.22
-        command:
-          - 200
-          - 201
-          - 202
-          - 203
-      - name: Item 3
-        command:
-          - 300
-          - 301
+  vars_files: variables.yml
         
   tasks:
 
